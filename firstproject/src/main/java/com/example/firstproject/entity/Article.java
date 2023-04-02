@@ -2,6 +2,7 @@ package com.example.firstproject.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor // 디폴트 생성자
 @ToString
+@Getter
 public class Article {
     @Id
     @GeneratedValue // 1,2,3, ... 자동 생성 언노테이션
@@ -25,4 +27,9 @@ public class Article {
     private String title;
     @Column
     private String content;
+
+    // 이렇게 안쓴다 롬복을 쓴다.
+//    public Long getId() {
+//        return id;
+//    }
 }

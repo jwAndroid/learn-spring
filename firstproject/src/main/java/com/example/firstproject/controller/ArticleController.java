@@ -23,6 +23,7 @@ public class ArticleController {
     @GetMapping("/articles/new")
     public String newArticleForm() {
         // 이 메소드는 화면단을 가져오기위한 get 메소드
+        // 새로운 데이터를 만드는 폼
         return "articles/new";
     }
 
@@ -39,14 +40,17 @@ public class ArticleController {
         // 2. 레포지토리에게 엔티디를 디비안에 저장!
 
         Article article = form.toEntity();
+        // 디비에 저장하기위한 엔티티
         log.info(article.toString());
         // 로깅이란? 자동차에서 블박이랑 비슷함. 서버에서 일어나는 일들을 모두 기록해줌.
 
 
         Article saved = articleRepository.save(article);
+        // 디비에 저장시켜줌
         log.info(saved.toString());
 
-        return "";
+        // 그러면 만들었으면 반환값을 머스태치 화면이 아니라 객체를 던져주면 받는건가??
+        return "redirect:/articles/" + saved.getId();
     }
 
     // 밑에 id 는 어떻게 가져오나? PathVariable 로 받는다.
