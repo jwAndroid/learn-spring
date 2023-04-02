@@ -5,12 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FirstController {
-
-    @GetMapping("/hi")
-    public String hello(Model model) {
+public class ByeController {
+    @GetMapping("/bye")
+    public String bye(Model model) {
         model.addAttribute("username" , "CJW");
 
-        return "greetings"; // templates/greetings.mustache -> 뷰 페이지를 찾아서 브라우저로 전송
+        return "bye";
     }
 }
