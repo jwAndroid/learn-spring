@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -18,7 +19,6 @@ import java.util.Optional;
 public class ArticleController {
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 연결
     private ArticleRepository articleRepository;
-
 
     @GetMapping("/articles/new")
     public String newArticleForm() {
@@ -66,5 +66,20 @@ public class ArticleController {
 
         // 머스테치의 이름 이다.
         return "articles/show";
+    }
+
+    @GetMapping("/articles")
+    public  String index (Model model) {
+        // 1: 모든 아티클스를 가져온다. 리파지토리가 필요하다.
+       List<Article> articles = articleRepository.findAll();
+       // 파인드올 하여 받아낼때는 레파지토리에서 파인드올을 오버라이드하여 가져온다.
+        // List > ArrayList 타입으로 형변환이 가능하다.
+
+        // 2. 가져온 아티클 묶음을 뷰단(머스태치 뷰)으로 전달!
+        model.addAttribute( "articleList", articles);
+
+        // 3. 뷰페이지 설정!
+
+        return  "articles/index";
     }
 }
