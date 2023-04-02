@@ -1,6 +1,10 @@
 package com.example.firstproject.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +13,9 @@ import javax.persistence.Id;
 // entity 언노테이션을 반드시 붙여준다.
 // 디비가 해당객체를 인식가능하다.
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor // 디폴트 생성자
+@ToString
 public class Article {
     @Id
     @GeneratedValue // 1,2,3, ... 자동 생성 언노테이션
@@ -18,19 +25,4 @@ public class Article {
     private String title;
     @Column
     private String content;
-
-    public Article(Long id, String title, String content) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-    }
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
 }
