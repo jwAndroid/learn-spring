@@ -37,15 +37,9 @@ G.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,a/e/ae
 Q.idea/sonarlint/securityhotspotstore/b/6/b66f1e5dccafdaabfb59613308da74dd7d70c3cc,5/9/598209a906ba52c58aeb5fd917a2e01390e58eba
 w
 G.idea/sonarlint/issuestore/e/5/e56a6a4374c76686545bb4e65af7dbf8ce7557aa,9/8/98d04fb188bb03f83c1543aa06a8e608b30f1b6a
-k
-;src/main/java/com/example/firstproject/dto/ArticleForm.java,3/5/3519a56885cf50db6eab5b59bcd294b107873b59
 Å
 Q.idea/sonarlint/securityhotspotstore/e/5/e56a6a4374c76686545bb4e65af7dbf8ce7557aa,3/7/37159768f8315b1cccda634a03fa518c3405729c
 Å
 Q.idea/sonarlint/securityhotspotstore/6/6/66472f8a5187716e97fd533be41d97905e8e0693,f/7/f796821a21256ce3f1e2615d76adad2e4a5fefa5
 w
 G.idea/sonarlint/issuestore/b/6/b66f1e5dccafdaabfb59613308da74dd7d70c3cc,9/0/9096a86620d035c055d24d5ce71ae88483cd0218
-x
-Hsrc/main/java/com/example/firstproject/controller/ArticleController.java,0/b/0b73772a13e51b5584158df631778d5420a116b7
-j
-:src/main/java/com/example/firstproject/entity/Article.java,3/0/30b10cc52d00ab25ec8ba9847e88929bb15c870e
