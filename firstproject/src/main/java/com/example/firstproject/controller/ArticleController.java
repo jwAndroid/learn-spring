@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -85,5 +86,36 @@ public class ArticleController {
         // 3. 뷰페이지 설정!
 
         return  "articles/index";
+    }
+
+    @GetMapping("/articles/{id}/edit")
+    public String edit(@PathVariable Long id , Model model) {
+        // PathVariable 는 위 겟 매핑에서 받는거랑 파라메터의 id 랑 같아야한다.
+        // 수정할 데이터를 가져오기. 디비에서 꺼내옴.
+       Article articleEntity = articleRepository.findById(id).orElse(null);
+       // 디비에서 꺼내와서 뷰에 뿌려주기위해 에드어트리뷰트로 등록해준다.
+       model.addAttribute("article" ,articleEntity);
+
+       return "articles/edit";
+    }
+
+    @PostMapping("/articles/update")
+    public String update(ArticleForm form) {
+        // 받아온 form(DTO) 를 디비에 patch 시키기위해 entity로 변환한다.
+       Article entity = form.toEntity();
+
+       // 수정은 읽는것을 바꾸는것.
+        // 디비의 기존데이터를 가져온다.
+        Article target = articleRepository.findById(entity.getId()).orElse(null); // 엔티티에서 가져온다.
+
+        // 기존 데이터의 값을 갱신(수정)한다.
+
+        if(target != null) {
+            articleRepository.save(entity);
+            // 갱신
+        }
+
+
+       return "redirect:/articles/" + entity.getId();
     }
 }
