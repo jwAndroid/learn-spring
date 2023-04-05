@@ -6,7 +6,9 @@ import com.example.firstproject.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 // 서비스는 이렇게 선언해준다.
@@ -59,5 +61,32 @@ public class ArticleService {
 
        articleRepository.delete(target);
        return target;
+    }
+
+    // 해당 메소드를 트랙잭션으로 묶는다.
+    // 만약에 실패하면 메소드가 수행되기 이전상태로 되돌려 버린다.
+    // 그래서 그전에 들어갔던 디비가 초기화되는것.
+    // 이부분 상당히 중요함.
+    // 디비에 잘못된 데이터가 들어가면 안되니 처음상태로 되돌려주는것.
+    @Transactional
+    public List<Article> createArticles(List<ArticleForm> dtos) {
+        // dto 묶음을 엔티티 묶음으로 변환!
+        // 리스트 묶음을 스트림화 시켜서 맵을 돌린다.
+      List<Article> articleList = dtos.stream()
+                .map(dto -> dto.toEntity())
+                .collect(Collectors.toList()); // 다시 리스트로 만들어준다.
+
+        // 엔티티 묶음을 디비로 저장
+      articleList.stream().forEach(article -> articleRepository.save(article));
+
+      articleRepository.findById(-1L).orElseThrow(
+              () -> new IllegalArgumentException("결제 실패!")
+      );
+
+        // 저장된 상태에서 강제로 예외 발생!
+
+        // 결과값 반환
+
+        return articleList;
     }
 }

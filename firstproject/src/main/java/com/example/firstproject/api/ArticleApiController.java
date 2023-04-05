@@ -57,6 +57,16 @@ public class ArticleApiController {
                 : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    @PostMapping("/api/transaction-test")
+    public ResponseEntity<List<Article>> transactionTest (@RequestBody List<ArticleForm> dtos) {
+       List<Article> list = articleService.createArticles(dtos);
+
+       return list != null
+               ? ResponseEntity.status(HttpStatus.OK).body(list)
+               : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+
 
     /// 하단 부터는 서비스 계층이 없는 코드 ///
 //    @Autowired
