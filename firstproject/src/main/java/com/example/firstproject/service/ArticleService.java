@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,7 +45,7 @@ public class ArticleService {
 
         Article target = articleRepository.findById(id).orElse(null);
 
-        if(target == null || id != article.getId()) {
+        if(target == null || !Objects.equals(id, article.getId())) {
             return null;
         }
 
