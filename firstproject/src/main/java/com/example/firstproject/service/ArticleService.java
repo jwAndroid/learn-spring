@@ -29,6 +29,7 @@ public class ArticleService {
        return articleRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public Article create(ArticleForm dto) {
         Article article = dto.toEntity();
 
@@ -40,6 +41,7 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
+    @Transactional
     public Article update(Long id, ArticleForm dto) {
         Article article = dto.toEntity();
 
@@ -53,6 +55,7 @@ public class ArticleService {
         return articleRepository.save(target);
     }
 
+    @Transactional
     public Article delete(Long id) {
        Article target = articleRepository.findById(id).orElse(null);
 
@@ -61,6 +64,7 @@ public class ArticleService {
        }
 
        articleRepository.delete(target);
+
        return target;
     }
 

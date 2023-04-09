@@ -2,14 +2,18 @@ package com.example.firstproject.dto;
 
 import com.example.firstproject.entity.Article;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
+@Getter
 public class ArticleForm {
-    private final Long id;
-    private final String title;
-    private final String content;
+    private Long id;
+    private String title;
+    private String content;
 
 
 // 롬복의 @AllArgsConstructor 로 대체 가능하다.
