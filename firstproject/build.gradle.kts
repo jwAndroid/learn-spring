@@ -14,6 +14,14 @@ repositories {
 
 
 dependencies {
+	// PostgreSQL 드라이버 추가!
+	runtimeOnly("org.postgresql:postgresql")
+
+	// 만약 오라클 쓰면 오라클 드라이버 추가!
+
+	// 만약 MySQL 드라이버 추가
+
+	// 10강: 롬복 추가
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 
