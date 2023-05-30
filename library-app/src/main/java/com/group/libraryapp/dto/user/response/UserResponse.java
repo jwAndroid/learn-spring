@@ -6,6 +6,12 @@ public class UserResponse {
     private final String name;
     private final Integer age;
 
+    public UserResponse(long id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
     public UserResponse(long id, User user) {
         this.id = id;
         this.name = user.getName();
