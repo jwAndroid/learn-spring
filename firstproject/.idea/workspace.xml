@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e032c7e-96e8-4a2c-9a82-33acc088a57a" name="Changes" comment="강의 종료">
-      <change afterPath="$PROJECT_DIR$/../library-app/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/config/UserConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/controller/book/BookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/repository/book/BookMemoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/repository/book/BookMySqlRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/repository/book/BookRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/book/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/exam/Exam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/exam/Exam1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/exam/Exam2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/exam/Exam3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/exam/ExamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/controller/calculator/CalculatorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/dto/calculator/request/CalculatorAddRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/dto/calculator/request/CalculatorMultiplyRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/dto/user/response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/dto/user/response/UserResponse.java" afterDir="false" />
-    </list>
+    <list default="true" id="4e032c7e-96e8-4a2c-9a82-33acc088a57a" name="Changes" comment="강의 종료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
