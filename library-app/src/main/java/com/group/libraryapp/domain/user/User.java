@@ -12,7 +12,6 @@ public class User {
     @Column(nullable = false, length = 20, name = "name")
     private String name;
 
-    // 테이블에서 동일하기 때문에 매핑시킬 필요가 없다.
     private Integer age;
 
     public User(String name, Integer age) {
@@ -23,7 +22,6 @@ public class User {
         this.age = age;
     }
 
-    // 엔티티는 디폴트 생성자가 반드시 필요하다.
     protected User() {}
 
     public String getName() {
