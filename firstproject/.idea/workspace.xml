@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e032c7e-96e8-4a2c-9a82-33acc088a57a" name="Changes" comment="강의 종료">
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/user/UserServiceV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../library-app/src/main/java/com/group/libraryapp/service/user/UserServiceV2.java" afterDir="false" />
-    </list>
+    <list default="true" id="4e032c7e-96e8-4a2c-9a82-33acc088a57a" name="Changes" comment="강의 종료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -187,6 +184,7 @@
       <workItem from="1685477935976" duration="106000" />
       <workItem from="1685554908330" duration="661000" />
       <workItem from="1685640357214" duration="140000" />
+      <workItem from="1685643168475" duration="689000" />
     </task>
     <task id="LOCAL-00001" summary="init: first spring project">
       <created>1679313873058</created>
