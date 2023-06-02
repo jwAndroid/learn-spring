@@ -16,12 +16,12 @@ public class UserLoanHistory {
     private String bookName;
 
     @Column(name = "is_return", nullable = false)
-    private boolean isReturn;
+    private int isReturn;
 
     public UserLoanHistory(long userId, String bookName) {
         this.userId = userId;
         this.bookName = bookName;
-        this.isReturn = false;
+        this.isReturn = 0;
     }
 
     protected UserLoanHistory() {}
