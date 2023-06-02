@@ -10,7 +10,6 @@ public class UserCreateRequest {
     public String getName() {
         return name;
     }
-
     public Integer getAge() {
         return age;
     }
