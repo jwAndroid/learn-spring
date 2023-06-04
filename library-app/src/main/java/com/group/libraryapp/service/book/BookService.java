@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class BookService {
@@ -52,7 +53,7 @@ public class BookService {
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
 
         // 5. 유저 정보와 책 정보를 기반으로 UserLoanHistory를 저장
-        userLoanHistoryRepository.save(new UserLoanHistory(user.getId(), book.getName()));
+        userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
     }
 
     @Transactional
@@ -60,24 +61,31 @@ public class BookService {
         // dto 에서 사용자의 이름을 받아 user 찾아주기.
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
 
-        // 테이블에서 찾은 user 를 사용해서 유저아이디, dto 의 책이름으로 UserLoanHistory 테이블에서 해당하는 정보를 찾아낸다.
-        UserLoanHistory userLoanHistory = userLoanHistoryRepository.findByUserIdAndBookName(user.getId(), request.getBookName()).orElseThrow(IllegalArgumentException::new);
+        // 테이블에서 찾은 user 를 사용해서 유저아이디, dto 의 책이름으로 UserLoanHistory
+        // 테이블에서 해당하는 정보를 찾아낸다.
+        UserLoanHistory userLoanHistory = userLoanHistoryRepository
+                .findByUserIdAndBookName(user.getId(), request.getBookName()).orElseThrow(IllegalArgumentException::new);
 
         // 정보를 찾았다면 isReturn 을 트루로 바꾸고, 다시 저장해준다.
         userLoanHistory.doReturn();
 //        userLoanHistoryRepository.save(userLoanHistory); 객체가 변경되면 save 는 생략 가능하다.
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Book> books() {
         return bookRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Book book(long id) {
         return bookRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
-    public Optional<List<BookLoanResponse>> myBooks(long id) {
-       return Optional.ofNullable(userLoanHistoryRepository.findAllByUserId(id).orElseThrow(IllegalArgumentException::new));
+    @Transactional(readOnly = true)
+    public List<BookLoanResponse> loans() {
+        return userLoanHistoryRepository.findAll()
+                .stream()
+                .map(BookLoanResponse::new)
+                .collect(Collectors.toList());
     }
 }

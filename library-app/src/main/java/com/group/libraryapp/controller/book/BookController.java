@@ -9,7 +9,7 @@ import com.group.libraryapp.service.book.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
 
 @RestController
 public class BookController {
@@ -44,9 +44,8 @@ public class BookController {
         bookService.returnBook(request);
     }
 
-    @GetMapping("/myBooks/{id}")
-    public Optional<List<BookLoanResponse>> myBooks(@PathVariable long id) {
-        return bookService.myBooks(id);
+    @GetMapping("/loans")
+    public List<BookLoanResponse> loans() {
+        return bookService.loans();
     }
-
 }

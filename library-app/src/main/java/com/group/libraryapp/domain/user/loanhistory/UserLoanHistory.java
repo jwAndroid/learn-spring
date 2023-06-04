@@ -1,32 +1,46 @@
 package com.group.libraryapp.domain.user.loanhistory;
+import com.group.libraryapp.domain.user.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_loan_history")
 public class UserLoanHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = null;
 
-    @Column(name = "user_id", nullable = false)
-    private long userId;
+    @ManyToOne
+    private User user;
 
-    @Column(name = "book_name", nullable = false)
     private String bookName;
 
-    @Column(name = "is_return", nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isReturn;
 
-    public UserLoanHistory(long userId, String bookName) {
-        this.userId = userId;
+    protected UserLoanHistory() {}
+
+    public UserLoanHistory(User user, String bookName) {
+        this.user = user;
         this.bookName = bookName;
         this.isReturn = false;
     }
 
-    protected UserLoanHistory() {}
-
     public void doReturn() {
         this.isReturn = true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public boolean getIsReturn() {
+        return isReturn;
     }
 }
