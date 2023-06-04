@@ -7,8 +7,11 @@ import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository;
 import com.group.libraryapp.dto.book.request.BookCreateRequest;
 import com.group.libraryapp.dto.book.request.BookLoanRequest;
+import com.group.libraryapp.dto.book.request.BookReturnRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class BookService {
@@ -38,7 +41,7 @@ public class BookService {
                 .orElseThrow(IllegalArgumentException::new);
 
         // 2. 대출기록 정보를 확인해서 대출중인지 확인.
-        if (userLoanHistoryRepository.existsByBookNameAndIsReturn(book.getName(), 0)) {
+        if (userLoanHistoryRepository.existsByBookNameAndIsReturn(book.getName(), false)) {
             // 3. 만약에 확인했는데 대출중이라면 예외를 발생시킴.
             throw new IllegalArgumentException("대출중인 책입니다.");
         }
@@ -48,5 +51,27 @@ public class BookService {
 
         // 5. 유저 정보와 책 정보를 기반으로 UserLoanHistory를 저장
         userLoanHistoryRepository.save(new UserLoanHistory(user.getId(), book.getName()));
+    }
+
+    @Transactional
+    public void returnBook(BookReturnRequest request) {
+        // dto 에서 사용자의 이름을 받아 user 찾아주기.
+        User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
+
+        // 테이블에서 찾은 user 를 사용해서 유저아이디, dto 의 책이름으로 UserLoanHistory 테이블에서 해당하는 정보를 찾아낸다.
+        UserLoanHistory userLoanHistory = userLoanHistoryRepository.findByUserIdAndBookName(user.getId(), request.getBookName()).orElseThrow(IllegalArgumentException::new);
+
+        // 정보를 찾았다면 isReturn 을 트루로 바꾸고, 다시 저장해준다.
+        userLoanHistory.doReturn();
+//        userLoanHistoryRepository.save(userLoanHistory); 객체가 변경되면 save 는 생략 가능하다.
+    }
+
+    @Transactional
+    public List<Book> books() {
+        return bookRepository.findAll();
+    }
+
+    public Book book(long id) {
+        return bookRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 }

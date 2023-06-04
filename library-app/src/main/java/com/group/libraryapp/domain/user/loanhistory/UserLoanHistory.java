@@ -15,14 +15,18 @@ public class UserLoanHistory {
     @Column(name = "book_name", nullable = false)
     private String bookName;
 
-    @Column(name = "is_return", nullable = false)
-    private int isReturn;
+    @Column(name = "is_return", nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean isReturn;
 
     public UserLoanHistory(long userId, String bookName) {
         this.userId = userId;
         this.bookName = bookName;
-        this.isReturn = 0;
+        this.isReturn = false;
     }
 
     protected UserLoanHistory() {}
+
+    public void doReturn() {
+        this.isReturn = true;
+    }
 }
