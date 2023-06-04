@@ -8,10 +8,12 @@ import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository;
 import com.group.libraryapp.dto.book.request.BookCreateRequest;
 import com.group.libraryapp.dto.book.request.BookLoanRequest;
 import com.group.libraryapp.dto.book.request.BookReturnRequest;
+import com.group.libraryapp.dto.book.response.BookLoanResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -73,5 +75,9 @@ public class BookService {
 
     public Book book(long id) {
         return bookRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+    }
+
+    public Optional<List<BookLoanResponse>> myBooks(long id) {
+       return Optional.ofNullable(userLoanHistoryRepository.findAllByUserId(id).orElseThrow(IllegalArgumentException::new));
     }
 }

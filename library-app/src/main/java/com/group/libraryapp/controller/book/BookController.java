@@ -4,12 +4,12 @@ import com.group.libraryapp.domain.book.Book;
 import com.group.libraryapp.dto.book.request.BookCreateRequest;
 import com.group.libraryapp.dto.book.request.BookLoanRequest;
 import com.group.libraryapp.dto.book.request.BookReturnRequest;
+import com.group.libraryapp.dto.book.response.BookLoanResponse;
 import com.group.libraryapp.service.book.BookService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class BookController {
@@ -44,5 +44,9 @@ public class BookController {
         bookService.returnBook(request);
     }
 
+    @GetMapping("/myBooks/{id}")
+    public Optional<List<BookLoanResponse>> myBooks(@PathVariable long id) {
+        return bookService.myBooks(id);
+    }
 
 }
