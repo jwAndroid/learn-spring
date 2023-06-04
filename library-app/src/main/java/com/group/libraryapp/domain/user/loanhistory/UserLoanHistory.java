@@ -4,17 +4,17 @@ import javax.persistence.*;
 
 @Entity
 public class UserLoanHistory {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = null;
 
-    @ManyToOne
-    private User user;
-
     private String bookName;
 
     private boolean isReturn;
+
+    @JoinColumn(nullable = false)
+    @ManyToOne
+    private User user;
 
     protected UserLoanHistory() {}
 

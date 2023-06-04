@@ -5,6 +5,6 @@ import java.util.Optional;
 
 public interface UserLoanHistoryRepository extends JpaRepository<UserLoanHistory , Long> {
     boolean existsByBookNameAndIsReturn(String bookName, boolean isReturn);
-    Optional<UserLoanHistory> findByUserIdAndBookName(long userId,  String bookName);
-    Optional<UserLoanHistory> findAllByUser(User user);
+//    Optional<UserLoanHistory> findByUserIdAndBookName(long userId,  String bookName);
+//    Optional<UserLoanHistory> findAllByUser(User user);
 }

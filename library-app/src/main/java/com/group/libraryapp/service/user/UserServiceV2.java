@@ -44,4 +44,10 @@ public class UserServiceV2 {
         userRepository.delete(user);
     }
 
+    @Transactional
+    public void deleteUserHistory() {
+        User user = userRepository.findByName("최지웅").orElseThrow(IllegalArgumentException::new);
+        user.removeOneHistory();
+    }
+
 }

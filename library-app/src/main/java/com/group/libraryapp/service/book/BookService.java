@@ -50,22 +50,30 @@ public class BookService {
         // 4. 유저 정보를 가져온다.
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
 
+        user.loanBook(request.getBookName());
+        // 캐스케이드 옵션에 의해서 가능한일이다.
+
         // 5. 유저 정보와 책 정보를 기반으로 UserLoanHistory를 저장
-        userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
+//        userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
     }
 
     @Transactional
     public void returnBook(BookReturnRequest request) {
         // dto 에서 사용자의 이름을 받아 user 찾아주기.
-        User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
+        User user = userRepository.findByName(request.getUserName())
+                .orElseThrow(IllegalArgumentException::new);
+
+        user.returnBook(request.getBookName());
+        // User 의 협력관계로 인한 도메인계층의 비니지스로직
 
         // 테이블에서 찾은 user 를 사용해서 유저아이디, dto 의 책이름으로 UserLoanHistory
         // 테이블에서 해당하는 정보를 찾아낸다.
-        UserLoanHistory userLoanHistory = userLoanHistoryRepository
-                .findByUserIdAndBookName(user.getId(), request.getBookName()).orElseThrow(IllegalArgumentException::new);
+//        UserLoanHistory userLoanHistory = userLoanHistoryRepository
+//                .findByUserIdAndBookName(user.getId(), request.getBookName())
+//                .orElseThrow(IllegalArgumentException::new);
 
         // 정보를 찾았다면 isReturn 을 트루로 바꾸고, 다시 저장해준다.
-        userLoanHistory.doReturn();
+//        userLoanHistory.doReturn();
 //        userLoanHistoryRepository.save(userLoanHistory); 객체가 변경되면 save 는 생략 가능하다.
     }
 
