@@ -11,10 +11,8 @@ import com.group.libraryapp.dto.book.request.BookReturnRequest;
 import com.group.libraryapp.dto.book.response.BookLoanResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class BookService {
