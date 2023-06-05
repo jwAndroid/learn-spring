@@ -20,9 +20,8 @@ public class User {
     private String name;
     private Integer age;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
-    // UserLoanHistory 와 연결되어져 있어서 가능하다.
 
     public User(String name, Integer age) {
         if(name == null || name.isBlank()) {
@@ -71,5 +70,4 @@ public class User {
     // isReturn 을 트루로 바꾸게되면 트랙잭션의 영속성 컨텍스트로 인해 save 가 자동으로 된다.
     // stream 은 함수형 프로그래밍을 사용할수 있게 해주는 함수이다.
     // 이런걸 도메인계층의 비니지스로직 이라고 표현한다. (서비스계층에서 -> 도메인계층으로 로직이 이동)
-    //
 }
